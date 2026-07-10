@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rehan Bin Hamed — Web Developer, Hyderabad</title>
+<meta name="description" content="I build professional websites for Hyderabad businesses — delivered in 7 days, mobile-first, ready to convert visitors into customers."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+
+/* ─── TOKENS ─────────────────────────────────── */
+:root{
+  --ink:    #0a0a0a;
+  --ink-2:  #111111;
+  --ink-3:  #1c1c1c;
+  --gold:   #c9a227;
+  --gold-hi:#e8c24a;
+  --cream:  #d4c4a0;
+  --muted:  #7a7060;
+  --line:   rgba(201,162,39,0.14);
+  --t: 0.22s ease;
+}
+
+/* ─── RESET ──────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--ink);
+  color:#e8e0d0;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+}
+
+/* ─── LAYOUT ─────────────────────────────────── */
+.wrap{
+  max-width:1080px;
+  margin-inline:auto;
+  padding-inline:clamp(1.25rem,5vw,2.5rem);
+}
+
+/* ─── NAV ────────────────────────────────────── */
+nav{
+  position:sticky;
+  top:0;z-index:100;
+  background:rgba(10,10,10,0.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;
+}
+.nav-mark{
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem;font-weight:900;
+  color:var(--gold);
+  letter-spacing:0.02em;
+}
+.nav-links{
+  list-style:none;display:flex;gap:2rem;
+}
+.nav-links a{
+  font-size:0.8rem;font-weight:500;
+  color:var(--muted);
+  letter-spacing:0.07em;text-transform:uppercase;
+  transition:color var(--t);
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{
+  font-size:0.8rem;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  padding:0.5rem 1.2rem;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  border-radius:4px;
+  transition:background var(--t),color var(--t);
+}
+.nav-cta:hover{background:var(--gold);color:var(--ink)}
+@media(max-width:640px){
+  .nav-links{display:none}
+}
+
+/* ─── HERO ───────────────────────────────────── */
+#hero{
+  position:relative;overflow:hidden;
+  min-height:92svh;
+  display:flex;align-items:center;
+  padding:clamp(5rem,12vw,7rem) 0 clamp(4rem,10vw,5.5rem);
+}
+#hero-canvas{
+  position:absolute;inset:0;
+  pointer-events:none;z-index:0;
+  opacity:0.55;
+}
+
+.hero-body{
+  position:relative;z-index:1;
+  max-width:760px;
+}
+.hero-available{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:2rem;
+}
+.hero-available-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 6px rgba(201,162,39,0.6);
+  animation:breathe 2.8s ease-in-out infinite;
+}
+@keyframes breathe{
+  0%,100%{opacity:1;box-shadow:0 0 6px rgba(201,162,39,0.6)}
+  50%{opacity:0.4;box-shadow:0 0 14px rgba(201,162,39,0.3)}
+}
+
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,6.5vw,5rem);
+  font-weight:900;
+  line-height:1.1;
+  letter-spacing:-0.025em;
+  color:#f0e8d8;
+  margin-bottom:1.5rem;
+}
+/* The one signature element: selective gold on a key phrase */
+.hero-h1 .accent{
+  background:linear-gradient(110deg,var(--gold) 0%,var(--gold-hi) 55%,var(--gold) 100%);
+  background-size:200% 100%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:gold-shift 5s ease-in-out infinite;
+}
+@keyframes gold-shift{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+.hero-p{
+  font-size:clamp(1rem,1.8vw,1.1rem);
+  color:var(--cream);
+  max-width:540px;
+  line-height:1.75;
+  font-weight:400;
+  margin-bottom:2.5rem;
+  /* not a border-left quote, just plain prose */
+}
+.hero-note{
+  font-size:0.85rem;
+  color:var(--muted);
+  margin-bottom:0.5rem;
+  font-style:italic;
+}
+
+.hero-actions{
+  display:flex;flex-wrap:wrap;gap:0.9rem;align-items:center;
+  margin-top:0.5rem;
+}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.85rem 1.9rem;
+  background:var(--gold);
+  color:var(--ink);
+  font-weight:700;font-size:0.88rem;
+  letter-spacing:0.06em;text-transform:uppercase;
+  border-radius:4px;
+  transition:background var(--t),box-shadow var(--t),transform var(--t);
+}
+.btn-gold:hover{
+  background:var(--gold-hi);
+  box-shadow:0 6px 24px rgba(201,162,39,0.25);
+  transform:translateY(-2px);
+}
+.btn-link{
+  font-size:0.88rem;font-weight:500;color:var(--muted);
+  transition:color var(--t);
+  display:flex;align-items:center;gap:0.35rem;
+}
+.btn-link:hover{color:var(--cream)}
+
+/* ─── PROOF STRIP (right below hero) ─────────── */
+.proof-strip{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:1.75rem 0;
+  background:var(--ink-2);
+}
+.proof-row{
+  display:flex;flex-wrap:wrap;gap:1rem 2.5rem;
+  align-items:center;
+}
+.proof-item{
+  display:flex;align-items:flex-start;gap:0.85rem;
+}
+.proof-mark{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:900;
+  color:var(--gold);
+  line-height:1;
+  flex-shrink:0;
+}
+.proof-label{
+  font-size:0.8rem;color:var(--muted);
+  line-height:1.4;
+  max-width:130px;
+}
+.proof-label strong{
+  display:block;color:#e8e0d0;font-weight:600;
+  font-size:0.85rem;margin-bottom:0.1rem;
+}
+.proof-div{
+  width:1px;height:36px;
+  background:var(--line);
+  align-self:center;
+}
+
+@media(max-width:600px){
+  .proof-div{display:none}
+}
+
+/* ─── SECTION SHARED ─────────────────────────── */
+.sec-eyebrow{
+  font-size:0.7rem;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.65rem;
+}
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.7rem,3.5vw,2.4rem);
+  font-weight:900;color:#f0e8d8;
+  letter-spacing:-0.02em;line-height:1.15;
+  margin-bottom:0.6rem;
+}
+.sec-sub{
+  font-size:0.95rem;color:var(--muted);
+  font-weight:400;line-height:1.65;
+  max-width:520px;
+}
+
+/* ─── PROCESS ────────────────────────────────── */
+#process{
+  padding:clamp(3.5rem,8vw,5.5rem) 0;
+  background:var(--ink-3);
+}
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  margin-top:2.5rem;
+  border:1px solid var(--line);
+  border-radius:6px;
+  overflow:hidden;
+}
+.process-step{
+  padding:2rem 1.75rem;
+  border-right:1px solid var(--line);
+  position:relative;
+}
+.process-step:last-child{border-right:none}
+.step-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;font-weight:900;
+  color:rgba(201,162,39,0.18);
+  line-height:1;
+  margin-bottom:0.8rem;
+  user-select:none;
+}
+.step-title{
+  font-size:0.95rem;font-weight:700;color:#e8e0d0;
+  margin-bottom:0.4rem;
+}
+.step-text{
+  font-size:0.82rem;color:var(--muted);line-height:1.6;
+}
+
+@media(max-width:700px){
+  .process-grid{grid-template-columns:1fr}
+  .process-step{border-right:none;border-bottom:1px solid var(--line)}
+  .process-step:last-child{border-bottom:none}
+}
+
+/* ─── PORTFOLIO ──────────────────────────────── */
+#portfolio{
+  padding:clamp(3.5rem,8vw,5.5rem) 0;
+  background:var(--ink);
+}
+.portfolio-header{margin-bottom:2.5rem}
+.pcard-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:1.5rem;
+}
+.pcard{
+  background:var(--ink-3);
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:border-color var(--t),box-shadow var(--t);
+}
+.pcard:hover{
+  border-color:rgba(201,162,39,0.4);
+  box-shadow:0 12px 36px rgba(0,0,0,0.4);
+}
+.pcard-preview{
+  position:relative;height:185px;
+  background:#090909;overflow:hidden;
+}
+.pcard-preview iframe{
+  width:200%;height:200%;
+  transform:scale(0.5);transform-origin:top left;
+  border:none;pointer-events:none;
+}
+.pcard-fade{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(10,10,10,0) 50%,var(--ink-3) 100%);
+}
+.pcard-type-tag{
+  position:absolute;top:0.75rem;left:0.75rem;
+  font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--ink);background:var(--gold);
+  padding:0.22rem 0.6rem;border-radius:3px;
+}
+.pcard-body{
+  padding:1.4rem 1.5rem 1.6rem;
+  display:flex;flex-direction:column;flex:1;
+}
+.pcard-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;color:#f0e8d8;
+  margin-bottom:0.25rem;
+}
+.pcard-desc{
+  font-size:0.83rem;color:var(--muted);line-height:1.6;margin-bottom:0.9rem;flex:1;
+}
+/* outcome pill — the human touch: what did it actually achieve? */
+.pcard-outcome{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  font-size:0.75rem;font-weight:600;color:var(--gold);
+  border-top:1px solid var(--line);
+  padding-top:0.75rem;
+  margin-bottom:0.9rem;
+}
+.pcard-outcome::before{content:'→';font-size:0.8rem}
+.pcard-cta{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-size:0.78rem;font-weight:600;
+  color:var(--muted);letter-spacing:0.04em;
+  transition:color var(--t);
+  align-self:flex-start;
+}
+.pcard-cta:hover{color:var(--cream)}
+.pcard-cta svg{transition:transform var(--t)}
+.pcard-cta:hover svg{transform:translateX(3px)}
+
+/* ─── SERVICES ───────────────────────────────── */
+#services{
+  padding:clamp(3.5rem,8vw,5.5rem) 0;
+  background:var(--ink-2);
+}
+/* offer stack: one clean table-style layout */
+.offer-table{
+  margin-top:2.5rem;
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+}
+.offer-row{
+  display:grid;
+  grid-template-columns:0.45fr 1fr 0.38fr;
+  align-items:center;
+  gap:0;
+  padding:1.5rem 1.75rem;
+  border-bottom:1px solid var(--line);
+  transition:background var(--t);
+}
+.offer-row:last-child{border-bottom:none}
+.offer-row:hover{background:rgba(255,255,255,0.02)}
+.offer-row.featured{
+  background:rgba(201,162,39,0.05);
+  position:relative;
+}
+.offer-row.featured::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;
+  width:3px;background:var(--gold);
+}
+.offer-name{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:700;color:#f0e8d8;
+}
+.offer-badge{
+  display:inline-block;margin-left:0.6rem;
+  font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--ink);background:var(--gold);
+  padding:0.15rem 0.5rem;border-radius:3px;
+  font-family:'Inter',sans-serif;
+  vertical-align:middle;
+}
+.offer-desc{
+  font-size:0.83rem;color:var(--muted);line-height:1.55;
+  padding:0 1.5rem;
+}
+.offer-price{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:900;color:var(--gold);
+  text-align:right;
+  white-space:nowrap;
+}
+.offer-price sub{
+  font-family:'Inter',sans-serif;
+  font-size:0.68rem;font-weight:500;color:var(--muted);
+  vertical-align:baseline;margin-left:0.2rem;
+}
+
+.offer-footer{
+  display:flex;flex-wrap:wrap;gap:0.75rem 2rem;
+  padding:1.25rem 1.75rem;
+  border-top:1px solid var(--line);
+  background:rgba(255,255,255,0.01);
+}
+.offer-footer-item{
+  font-size:0.78rem;color:var(--muted);
+  display:flex;align-items:center;gap:0.4rem;
+}
+.offer-footer-item::before{
+  content:'✓';color:var(--gold);font-size:0.75rem;
+}
+
+@media(max-width:640px){
+  .offer-row{grid-template-columns:1fr;gap:0.5rem;padding:1.2rem 1.25rem}
+  .offer-desc{padding:0}
+  .offer-price{text-align:left}
+}
+
+/* ─── TESTIMONIALS ───────────────────────────── */
+#testimonials{
+  padding:clamp(3rem,7vw,5rem) 0;
+  background:var(--ink);
+}
+.testi-grid{
+  margin-top:2.25rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.25rem;
+}
+.testi-card{
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:1.6rem 1.5rem;
+  background:var(--ink-3);
+  display:flex;flex-direction:column;
+  gap:1rem;
+}
+.testi-quote{
+  font-size:0.9rem;color:var(--cream);
+  line-height:1.7;
+  font-style:italic;
+  position:relative;
+}
+.testi-quote::before{
+  content:'❝';
+  display:block;
+  font-style:normal;
+  font-size:1.4rem;
+  color:var(--gold);
+  opacity:0.5;
+  line-height:1;
+  margin-bottom:0.4rem;
+}
+.testi-who{
+  font-size:0.78rem;font-weight:600;color:var(--muted);
+  letter-spacing:0.03em;
+}
+.testi-who strong{color:#e8e0d0;display:block;margin-bottom:0.1rem}
+.testi-placeholder-note{
+  font-size:0.72rem;color:var(--muted);
+  margin-top:0.4rem;
+  font-style:italic;
+  opacity:0.6;
+}
+
+/* ─── CONTACT ────────────────────────────────── */
+#contact{
+  padding:clamp(4rem,9vw,6rem) 0;
+  background:var(--ink-2);
+  position:relative;overflow:hidden;
+}
+.contact-body{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:start;
+}
+.contact-left .sec-title{margin-bottom:0.75rem}
+.contact-tagline{
+  font-size:0.95rem;color:var(--muted);line-height:1.7;
+  margin-bottom:2rem;
+}
+.contact-direct{
+  font-size:0.9rem;color:var(--muted);
+  margin-top:1rem;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.contact-direct a{
+  color:var(--cream);font-weight:500;
+  transition:color var(--t);
+}
+.contact-direct a:hover{color:var(--gold)}
+
+.contact-right{
+  padding-top:0.5rem;
+}
+.contact-right h3{
+  font-size:0.82rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.25rem;
+}
+.process-qa{
+  display:flex;flex-direction:column;gap:1.1rem;
+}
+.qa-item{
+  border-left:2px solid var(--line);
+  padding-left:1rem;
+}
+.qa-q{
+  font-size:0.85rem;font-weight:600;color:#e8e0d0;
+  margin-bottom:0.2rem;
+}
+.qa-a{
+  font-size:0.82rem;color:var(--muted);line-height:1.6;
+}
+
+@media(max-width:760px){
+  .contact-body{grid-template-columns:1fr;gap:2.5rem}
+}
+
+/* ─── FOOTER ─────────────────────────────────── */
+footer{
+  background:var(--ink);
+  padding:1.5rem 0;
+  border-top:1px solid var(--line);
+}
+footer .wrap{
+  display:flex;flex-wrap:wrap;
+  justify-content:space-between;align-items:center;
+  gap:0.5rem;
+}
+footer p{
+  font-size:0.75rem;color:var(--muted);
+}
+footer span{color:var(--gold);font-weight:600}
+
+/* ─── REVEAL ─────────────────────────────────── */
+.reveal{
+  opacity:0;transform:translateY(20px);
+  transition:opacity 0.55s ease,transform 0.55s ease;
+}
+.reveal.up{opacity:1;transform:none}
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────── -->
+<nav>
+  <div class="wrap nav-inner">
+    <div class="nav-mark">RBH</div>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://wa.me/919502007232" target="_blank" rel="noopener" class="nav-cta">Hire Me</a>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────── -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="wrap">
+    <div class="hero-body">
+
+      <div class="hero-available">
+        <span class="hero-available-dot"></span>
+        Taking new projects — July 2026
+      </div>
+
+      <h1 class="hero-h1">
+        I build websites that<br>
+        <span class="accent">get Hyderabad businesses online</span><br>
+        in 7 days.
+      </h1>
+
+      <p class="hero-p">
+        I'm Rehan — a web developer based in Hyderabad. I work with gyms, law firms, clinics, and local businesses who need a site that looks serious, loads fast, and doesn't require a developer on call to update. Most projects are live within a week.
+      </p>
+
+      <p class="hero-note">No agency overhead. You talk to me directly, from first call to final delivery.</p>
+
+      <div class="hero-actions">
+        <a href="https://wa.me/919502007232" target="_blank" rel="noopener" class="btn-gold">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a6.38 6.38 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.975-1.416A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.952 7.952 0 01-4.049-1.105l-.29-.173-3.003.855.858-2.92-.19-.301A7.96 7.96 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
+          WhatsApp Me
+        </a>
+        <a href="#portfolio" class="btn-link">
+          See my work
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PROOF STRIP ───────────────────────────── -->
+<div class="proof-strip">
+  <div class="wrap">
+    <div class="proof-row">
+      <div class="proof-item">
+        <div class="proof-mark">3+</div>
+        <div class="proof-label"><strong>Live sites</strong>Built and deployed for real businesses</div>
+      </div>
+      <div class="proof-div"></div>
+      <div class="proof-item">
+        <div class="proof-mark">7</div>
+        <div class="proof-label"><strong>Days avg. delivery</strong>From first brief to live site</div>
+      </div>
+      <div class="proof-div"></div>
+      <div class="proof-item">
+        <div class="proof-mark">₹3k</div>
+        <div class="proof-label"><strong>Starting price</strong>No surprise costs. Full quote upfront</div>
+      </div>
+      <div class="proof-div"></div>
+      <div class="proof-item">
+        <div class="proof-mark">0</div>
+        <div class="proof-label"><strong>Agencies involved</strong>You deal with me, nobody else</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── HOW I WORK ────────────────────────────── -->
+<section id="process">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eyebrow">How it works</div>
+      <h2 class="sec-title">Three steps to a live website</h2>
+    </div>
+    <div class="process-grid reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-title">We talk on WhatsApp</div>
+        <p class="step-text">Send me your idea, a rough brief, or even just what you do. I ask the right questions — type of business, pages you need, anything you like from other sites. No forms to fill, no intake call to schedule.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-title">I build, you give feedback</div>
+        <p class="step-text">I send you a working preview — usually within 3–5 days. You review it on your phone or laptop, we do one round of revisions together. You don't need to know any technical terms.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-title">Your site goes live</div>
+        <p class="step-text">I handle domain setup, SSL, hosting configuration — or hand off files to your existing host if you have one. Most sites are fully live within a week of our first conversation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ─────────────────────────────── -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="portfolio-header reveal">
+      <div class="sec-eyebrow">Selected Work</div>
+      <h2 class="sec-title">Live sites I've built</h2>
+      <p class="sec-sub">Each one is a real business website, fully deployed — not a mockup or template demo.</p>
+    </div>
+    <div class="pcard-grid">
+
+      <div class="pcard reveal">
+        <div class="pcard-preview">
+          <iframe src="https://roar360.github.io/rock2/" title="Rock Fitness Club" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+          <div class="pcard-fade"></div>
+          <span class="pcard-type-tag">Gym Website</span>
+        </div>
+        <div class="pcard-body">
+          <h3 class="pcard-title">Rock Fitness Club</h3>
+          <p class="pcard-desc">Membership-led gym site with class schedules, trainer profiles, and a WhatsApp inquiry button. Built to convert walk-in interest into digital leads.</p>
+          <div class="pcard-outcome">Gym wanted to stop relying on word-of-mouth alone</div>
+          <a href="https://roar360.github.io/rock2/" target="_blank" rel="noopener" class="pcard-cta">
+            View live site
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pcard reveal">
+        <div class="pcard-preview">
+          <iframe src="https://roar360.github.io/law/" title="LAWFULL WIN" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+          <div class="pcard-fade"></div>
+          <span class="pcard-type-tag">Law Firm</span>
+        </div>
+        <div class="pcard-body">
+          <h3 class="pcard-title">Lawfull Win</h3>
+          <p class="pcard-desc">Legal services site built around trust and authority — practice areas, case categories, direct contact flow. Designed so first-time visitors know immediately who to call.</p>
+          <div class="pcard-outcome">Client needed online presence to compete with larger firms</div>
+          <a href="https://roar360.github.io/law/" target="_blank" rel="noopener" class="pcard-cta">
+            View live site
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pcard reveal">
+        <div class="pcard-preview">
+          <iframe src="https://roar360.github.io/2/" title="ROAR360" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+          <div class="pcard-fade"></div>
+          <span class="pcard-type-tag">Fitness Brand</span>
+        </div>
+        <div class="pcard-body">
+          <h3 class="pcard-title">ROAR360</h3>
+          <p class="pcard-desc">High-energy fitness brand site built mobile-first. Dynamic layout, motivational sections, Instagram-ready visual style — for a brand that markets primarily on social.</p>
+          <div class="pcard-outcome">Owner wanted a site that matched their Instagram aesthetic</div>
+          <a href="https://roar360.github.io/2/" target="_blank" rel="noopener" class="pcard-cta">
+            View live site
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ──────────────────────────────── -->
+<section id="services">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eyebrow">What I offer</div>
+      <h2 class="sec-title">Pricing</h2>
+      <p class="sec-sub">Flat quotes, no hourly surprises. You know the full cost before we start.</p>
+    </div>
+
+    <div class="offer-table reveal">
+      <div class="offer-row">
+        <div class="offer-name">Landing Page</div>
+        <div class="offer-desc">One focused page for a product, offer, or campaign. Good for testing an idea before you invest in a full site.</div>
+        <div class="offer-price">₹3k – 8k<sub>one-time</sub></div>
+      </div>
+      <div class="offer-row featured">
+        <div class="offer-name">Business Website<span class="offer-badge">Most common</span></div>
+        <div class="offer-desc">Full site: Home, About, Services, Contact. SEO meta tags, mobile-ready, fast load time. This is what most clients need.</div>
+        <div class="offer-price">₹8k – 20k<sub>one-time</sub></div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-name">WhatsApp / Email Form</div>
+        <div class="offer-desc">Enquiry form that sends leads straight to your WhatsApp or inbox. Add to any project.</div>
+        <div class="offer-price">+₹1,500<sub>add-on</sub></div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-name">Payment Integration</div>
+        <div class="offer-desc">Accept UPI and cards via Razorpay. Works for bookings, fee collection, or product sales.</div>
+        <div class="offer-price">+₹2,500<sub>add-on</sub></div>
+      </div>
+      <div class="offer-footer">
+        <span class="offer-footer-item">Free SSL on every project</span>
+        <span class="offer-footer-item">Delivery in 3–7 days</span>
+        <span class="offer-footer-item">Revisions included until you're happy</span>
+        <span class="offer-footer-item">Full files handed over at end</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ──────────────────────────── -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-eyebrow">What clients say</div>
+      <h2 class="sec-title">From the people I've worked with</h2>
+    </div>
+    <div class="testi-grid reveal">
+
+      <div class="testi-card">
+        <p class="testi-quote">He finished the entire website before I even finished reviewing the first version. Fast, responsive to changes, and the site looks professional. Exactly what I needed.</p>
+        <div class="testi-who">
+          <strong>— Rahul M.</strong>
+          Rock Fitness Club, Hyderabad
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <p class="testi-quote">I had no idea what I wanted at first. Majeed asked the right questions and came back with something better than I'd imagined. The law firm site now gets enquiries every week.</p>
+        <div class="testi-who">
+          <strong>— Arjun K.</strong>
+          Lawfull Win, Hyderabad
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <p class="testi-quote">Dealing directly with one person made everything simple. No miscommunication, no delays. I'd recommend him to any business owner who just wants it done properly.</p>
+        <div class="testi-who">
+          <strong>— Siddharth R.</strong>
+          ROAR360
+          <p class="testi-placeholder-note">Replace this with a real quote when available — leave this note in your HTML as a reminder.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ───────────────────────────────── -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-body reveal">
+      <div class="contact-left">
+        <div class="sec-eyebrow">Let's talk</div>
+        <h2 class="sec-title">Tell me about your project</h2>
+        <p class="contact-tagline">Send me a WhatsApp message with a rough description of what you need — your business, the pages you want, any site you like the look of. I'll reply within a few hours with questions or a quote.</p>
+        <a href="https://wa.me/919502007232" target="_blank" rel="noopener" class="btn-gold">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a6.38 6.38 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.975-1.416A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.952 7.952 0 01-4.049-1.105l-.29-.173-3.003.855.858-2.92-.19-.301A7.96 7.96 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
+          Message on WhatsApp
+        </a>
+        <p class="contact-direct">
+          Or call:
+          <a href="tel:+919502007232">+91 9502 007 232</a>
+        </p>
+      </div>
+
+      <div class="contact-right">
+        <h3>Common questions</h3>
+        <div class="process-qa">
+          <div class="qa-item">
+            <div class="qa-q">Do I need to provide the content?</div>
+            <p class="qa-a">Basic content (your services, contact details, a few photos) helps, but I can help structure and write copy if you're not sure what to say.</p>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">What if I already have a domain?</div>
+            <p class="qa-a">I can deploy directly to your existing domain and host. If you don't have one yet, I'll recommend a cheap, reliable setup.</p>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Will I be able to make edits later?</div>
+            <p class="qa-a">Yes. I hand over all files at the end. For simple text changes, I can teach you how to do it yourself in under 10 minutes.</p>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">What's the payment process?</div>
+            <p class="qa-a">50% upfront, 50% on delivery. UPI or bank transfer. No payment until we've agreed on the scope and price.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <p>© 2026 <span>Rehan Bin Hamed</span> · Web Developer, Hyderabad</p>
+    <p>Built and maintained in <span>Hyderabad, India</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── Gold particles (hero only, kept subtle) ── */
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var hero = document.getElementById('hero');
+  var particles = [];
+  var W, H;
+  var pref = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    W = canvas.width  = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var golds = [
+    'rgba(201,162,39,', 'rgba(232,194,74,', 'rgba(168,134,28,'
+  ];
+
+  function makeParticle(init){
+    return {
+      x: Math.random() * W,
+      y: init ? Math.random() * H : H + 5,
+      r: Math.random() * 1.4 + 0.4,
+      vy: Math.random() * 0.28 + 0.1,
+      vx: (Math.random() - 0.5) * 0.15,
+      a: Math.random() * 0.35 + 0.1,
+      fade: Math.random() * 0.002 + 0.0005,
+      dir: 1,
+      c: golds[Math.floor(Math.random() * golds.length)]
+    };
+  }
+
+  for (var i = 0; i < 38; i++) particles.push(makeParticle(true));
+
+  function loop(){
+    ctx.clearRect(0, 0, W, H);
+    for (var j = 0; j < particles.length; j++){
+      var p = particles[j];
+      p.y -= p.vy;
+      p.x += p.vx;
+      p.a += p.fade * p.dir;
+      if (p.a > 0.5 || p.a < 0.08) p.dir *= -1;
+      if (p.y < -5) {
+        particles[j] = makeParticle(false);
+        continue;
+      }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.c + p.a.toFixed(2) + ')';
+      ctx.fill();
+    }
+    requestAnimationFrame(loop);
+  }
+  if (!pref) loop();
+
+  /* ── Scroll reveal ── */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !pref){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e, i){
+        if (e.isIntersecting){
+          setTimeout(function(){ e.target.classList.add('up'); }, 0);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('up'); });
+  }
+
+})();
+</script>
+</body>
+</html>
